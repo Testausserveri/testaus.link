@@ -1,5 +1,6 @@
 import { createStyles, Title, Text, Button, Container, Group, MantineProvider } from '@mantine/core';
 import type { NextPage } from 'next';
+import Head from 'next/head';
 
 const useStyles = createStyles((theme) => ({
   root: {

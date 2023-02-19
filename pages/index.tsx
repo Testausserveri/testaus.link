@@ -2,36 +2,35 @@ import { createStyles, Container, Text, TextInput, Button, MantineProvider, keyf
 import { useViewportSize } from '@mantine/hooks';
 import { Link1Icon } from '@radix-ui/react-icons';
 import type { NextPage } from 'next';
-import { Footer } from '../components/Footer/Footer';
+import Footer from '../components/Footer';
 import { useState } from 'react';
 import { ChangeEvent } from 'react';
 import axios from 'axios';
 
-const BREAKPOINT = '@media (max-width: 755px)';
+const BREAKPOINT = 755;
 
-const fadeOut = keyframes`
-from {
-  opacity: 1;
-  transform: translateY(0);
-}
+const fadeOut = keyframes({
+  from: {
+    opacity: 1,
+    transform: 'translateY(0)',
+  },
 
-to {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-`;
+  to: {
+    opacity: 0,
+    transform: 'translateY(-20px)',
+  },
+});
 
 const useStyles = createStyles((theme) => ({
   inner: {
     position: 'relative',
     paddingTop: useViewportSize().height / 3.1,
     paddingBottom: useViewportSize().height / 8.5,
-    [BREAKPOINT]: {
+    [`@media (max-width: ${BREAKPOINT})`]: {
       paddingBottom: 80,
       paddingTop: 80,
     },
   },
-
   title: {
     fontFamily: `Poppins`,
     fontSize: 62,
@@ -42,20 +41,18 @@ const useStyles = createStyles((theme) => ({
     padding: 0,
     color: theme.white,
 
-    [BREAKPOINT]: {
+    [`@media (max-width: ${BREAKPOINT})`]: {
       fontSize: 42,
       lineHeight: 1.2,
     },
   },
-
   controls: {
     marginTop: theme.spacing.xl * 2,
 
-    [BREAKPOINT]: {
+    [`@media (max-width: ${BREAKPOINT})`]: {
       marginTop: theme.spacing.xl,
     },
   },
-
   notification: {
     animation: `${fadeOut} 2s forwards`,
   },
@@ -107,7 +104,6 @@ const Home: NextPage = () => {
         </h1>
         <div className={classes.controls} style={{ display: 'flex', alignItems: 'center' }}>
           <TextInput value={text} onChange={handleChange} style={{ marginRight: 8, flex: 1 }} placeholder="Url" size="md" icon={<Link1Icon />} />
-
           <Tooltip classNames={{ tooltip: classes.notification }} opened={opened} label="Copied!">
             <Button
               styles={(theme) => ({

@@ -57,7 +57,7 @@ export function Footer() {
               event.currentTarget.style.textDecoration = 'none';
             }}
             component="a"
-            href="https://github.com/tähänsitteseurljoskus"
+            href="https://github.com/Testausserveri/testaus.link"
             color="#23bde7"
           >
             Source code

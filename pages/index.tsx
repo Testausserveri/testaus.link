@@ -75,7 +75,7 @@ const Home: NextPage = () => {
   async function handleClick() {
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/new`, { url: text });
-      setText('https://testaus.link/' + response.data);
+      setText('https://testaus.link/' + response.data.short);
     } catch (error) {
       console.error(error);
     }

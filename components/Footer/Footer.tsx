@@ -43,7 +43,6 @@ export function Footer() {
           <Image src={TestausserveriLogo} className={classes.logo} height={90} width={155} alt="Testausserveri Logo" />
         </a>
         <Box>
-          <Text>With ❤️ by lead developers and contributors</Text>
           <Text>© {new Date().getFullYear()} Testausserveri ry & contributors</Text>
           <Text>
             <i>Licensed under the MIT license</i>

@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
   inner: {
     position: 'relative',
     paddingTop: useViewportSize().height / 3.1,
-    paddingBottom: useViewportSize().height / 8.5,
+    paddingBottom: useViewportSize().height / 8,
     [`@media (max-width: ${BREAKPOINT})`]: {
       paddingBottom: 80,
       paddingTop: 80,

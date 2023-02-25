@@ -98,6 +98,12 @@ const Home: NextPage = () => {
     }, 200);
   }
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === 'Enter' && !showCopy) {
+      handleClick();
+    }
+  };
+
   return (
     <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
       <Container size={700} className={classes.inner}>
@@ -108,7 +114,7 @@ const Home: NextPage = () => {
           .link
         </h1>
         <div className={classes.controls} style={{ display: 'flex', alignItems: 'center' }}>
-          <TextInput value={text} onChange={handleChange} style={{ marginRight: 8, flex: 1 }} placeholder="Url" size="md" icon={<Link1Icon />} />
+          <TextInput value={text} onChange={handleChange} onKeyDown={handleKeyDown} style={{ marginRight: 8, flex: 1 }} placeholder="Url" size="md" icon={<Link1Icon />} />
           <Tooltip classNames={{ tooltip: classes.notification }} opened={opened} label="Copied!">
             <Button
               styles={(theme) => ({

@@ -6,6 +6,12 @@ import Footer from '../components/Footer';
 import { useState } from 'react';
 import { ChangeEvent } from 'react';
 import axios from 'axios';
+import { Poppins } from '@next/font/google';
+
+const poppins = Poppins({
+  weight: ['500', '400', '900'],
+  subsets: ['latin'],
+});
 
 const BREAKPOINT = 755;
 
@@ -25,14 +31,13 @@ const useStyles = createStyles((theme) => ({
   inner: {
     position: 'relative',
     paddingTop: useViewportSize().height / 3.1,
-    paddingBottom: useViewportSize().height / 8,
     [`@media (max-width: ${BREAKPOINT})`]: {
       paddingBottom: 80,
       paddingTop: 80,
     },
   },
   title: {
-    fontFamily: `Poppins`,
+    fontFamily: poppins.style.fontFamily,
     fontSize: 62,
     fontWeight: 900,
     lineHeight: 1.1,
@@ -109,7 +114,7 @@ const Home: NextPage = () => {
               styles={(theme) => ({
                 root: {
                   backgroundColor: '#23bde7',
-                  fontFamily: 'Poppins',
+                  fontFamily: poppins.style.fontFamily,
                   fontSize: 16,
                   fontWeight: 500,
                   border: 0,

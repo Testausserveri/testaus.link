@@ -1,14 +1,23 @@
 import { createStyles, Container, Text, Box, Anchor } from '@mantine/core';
 import TestausserveriLogo from '../../public/testausserveri.svg';
 import Image from 'next/image';
+import { Poppins } from '@next/font/google';
+
+const poppins = Poppins({
+  weight: ['500', '400', '900'],
+  subsets: ['latin'],
+});
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    fontFamily: `Poppins`,
+    fontFamily: poppins.style.fontFamily,
     fontSize: 14,
     fontWeight: 400,
     marginTop: 220,
     borderTop: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]}`,
+    position: 'fixed',
+    bottom: 0,
+    width: '100%',
   },
 
   inner: {
@@ -40,13 +49,10 @@ export function Footer() {
     <div className={classes.footer}>
       <Container className={classes.inner}>
         <a href="https://testausserveri.fi">
-          <Image src={TestausserveriLogo} className={classes.logo} height={90} width={155} alt="Testausserveri Logo" />
+          <Image src={TestausserveriLogo} className={classes.logo} height={60} alt="Testausserveri Logo" />
         </a>
         <Box>
           <Text>© {new Date().getFullYear()} Testausserveri ry & contributors</Text>
-          <Text>
-            <i>Licensed under the MIT license</i>
-          </Text>
           <Text
             style={{ textDecoration: 'none', transition: 'text-decoration 0.3s' }}
             onMouseEnter={(event) => {

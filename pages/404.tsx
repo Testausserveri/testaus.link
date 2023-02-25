@@ -1,6 +1,11 @@
 import { createStyles, Title, Text, Button, Container, Group, MantineProvider } from '@mantine/core';
 import type { NextPage } from 'next';
-import Head from 'next/head';
+import { Poppins } from '@next/font/google';
+
+const poppins = Poppins({
+  weight: ['500', '400', '900'],
+  subsets: ['latin'],
+});
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -48,7 +53,7 @@ const PageNotFound: NextPage = () => {
       theme={{
         // Override any other properties from default theme
         colorScheme: 'dark',
-        fontFamily: 'Poppins',
+        fontFamily: poppins.style.fontFamily,
       }}
       withGlobalStyles
       withNormalizeCSS

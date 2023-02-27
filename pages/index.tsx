@@ -1,4 +1,4 @@
-import { createStyles, Container, Text, TextInput, Button, MantineProvider, keyframes, Tooltip } from '@mantine/core';
+import { createStyles, Container, Text, TextInput, Button, MantineProvider, keyframes, Tooltip, MantineTheme } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { Link1Icon } from '@radix-ui/react-icons';
 import type { NextPage } from 'next';
@@ -104,6 +104,24 @@ const Home: NextPage = () => {
     }
   };
 
+  const buttonStyle = (theme: MantineTheme) => ({
+    root: {
+      backgroundColor: '#23bde7',
+      fontFamily: poppins.style.fontFamily,
+      fontSize: 16,
+      fontWeight: 500,
+      border: 0,
+      paddingLeft: 20,
+      paddingRight: 20,
+
+      '&:hover': {
+        backgroundColor: theme.fn.darken('#23bde7', 0.05),
+      },
+
+      marginLeft: 8
+    },
+  })
+
   return (
     <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
       <Container size={700} className={classes.inner}>
@@ -114,30 +132,25 @@ const Home: NextPage = () => {
           .link
         </h1>
         <div className={classes.controls} style={{ display: 'flex', alignItems: 'center' }}>
-          <TextInput value={text} onChange={handleChange} onKeyDown={handleKeyDown} style={{ marginRight: 8, flex: 1 }} placeholder="Url" size="md" icon={<Link1Icon />} />
+          <TextInput value={text} onChange={handleChange} onKeyDown={handleKeyDown} style={{ flex: 1 }} placeholder="Url" size="md" icon={<Link1Icon />} />
           <Tooltip classNames={{ tooltip: classes.notification }} opened={opened} label="Copied!">
             <Button
-              styles={(theme) => ({
-                root: {
-                  backgroundColor: '#23bde7',
-                  fontFamily: poppins.style.fontFamily,
-                  fontSize: 16,
-                  fontWeight: 500,
-                  border: 0,
-                  paddingLeft: 20,
-                  paddingRight: 20,
-
-                  '&:hover': {
-                    backgroundColor: theme.fn.darken('#23bde7', 0.05),
-                  },
-                },
-              })}
+              styles={buttonStyle}
               size="md"
               onClick={showCopy ? handleCopyToClipboard : handleClick}
             >
               {showCopy ? 'Copy' : 'Create Shortlink'}
             </Button>
           </Tooltip>
+          {showCopy ?
+            <Button
+              styles={buttonStyle}
+              size="md"
+              onClick={() => { setShowCopy(false); setText("") }}
+            >
+              New link
+            </Button>
+            : null}
         </div>
       </Container>
       <Footer></Footer>

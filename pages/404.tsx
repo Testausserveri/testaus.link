@@ -49,28 +49,18 @@ const PageNotFound: NextPage = () => {
   const { classes } = useStyles();
 
   return (
-    <MantineProvider
-      theme={{
-        // Override any other properties from default theme
-        colorScheme: 'dark',
-        fontFamily: poppins.style.fontFamily,
-      }}
-      withGlobalStyles
-      withNormalizeCSS
-    >
-      <Container className={classes.root}>
-        <div className={classes.label}>404</div>
-        <Title className={classes.title}>Not found</Title>
-        <Text color="dimmed" size="lg" align="center" className={classes.description}>
-          Unfortunately, the page you requested was not found on this site. You may have mistyped the address, or the page may have been moved to another URL.
-        </Text>
-        <Group position="center">
-          <Button component="a" href="/" variant="subtle" size="md">
-            Take me back to the home page
-          </Button>
-        </Group>
-      </Container>
-    </MantineProvider>
+    <Container className={classes.root}>
+      <div className={classes.label}>404</div>
+      <Title className={classes.title}>Not found</Title>
+      <Text color="dimmed" size="lg" align="center" className={classes.description}>
+        Unfortunately, the page you requested was not found on this site. You may have mistyped the address, or the page may have been moved to another URL.
+      </Text>
+      <Group position="center">
+        <Button component="a" href="/" variant="subtle" size="md">
+          Take me back to the home page
+        </Button>
+      </Group>
+    </Container>
   );
 };
 

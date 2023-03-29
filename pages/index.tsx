@@ -1,17 +1,10 @@
-import { createStyles, Container, Text, TextInput, Button, MantineProvider, keyframes, Tooltip } from '@mantine/core';
-import { useViewportSize } from '@mantine/hooks';
+import { createStyles, Container, Text, TextInput, Button, keyframes, Tooltip } from '@mantine/core';
 import { Link1Icon } from '@radix-ui/react-icons';
 import type { NextPage } from 'next';
 import Footer from '../components/Footer';
 import { useState } from 'react';
 import { ChangeEvent } from 'react';
 import axios from 'axios';
-import { Poppins } from '@next/font/google';
-
-const poppins = Poppins({
-  weight: ['500', '400', '900'],
-  subsets: ['latin'],
-});
 
 const BREAKPOINT = 755;
 
@@ -30,14 +23,13 @@ const fadeOut = keyframes({
 const useStyles = createStyles((theme) => ({
   inner: {
     position: 'relative',
-    paddingTop: useViewportSize().height / 3.1,
+    paddingTop: "32vh",
     [`@media (max-width: ${BREAKPOINT})`]: {
       paddingBottom: 80,
       paddingTop: 80,
     },
   },
   title: {
-    fontFamily: poppins.style.fontFamily,
     fontSize: 62,
     fontWeight: 900,
     lineHeight: 1.1,
@@ -105,7 +97,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
+    <>
       <Container size={700} className={classes.inner}>
         <h1 className={classes.title}>
           <Text component="a" href="https://testausserveri.fi" variant="gradient" gradient={{ from: '#8BBAFF', to: '#6CE5FF', deg: 65.61 }} inherit>
@@ -120,7 +112,6 @@ const Home: NextPage = () => {
               styles={(theme) => ({
                 root: {
                   backgroundColor: '#23bde7',
-                  fontFamily: poppins.style.fontFamily,
                   fontSize: 16,
                   fontWeight: 500,
                   border: 0,
@@ -141,7 +132,7 @@ const Home: NextPage = () => {
         </div>
       </Container>
       <Footer></Footer>
-    </MantineProvider>
+    </>
   );
 };
 
